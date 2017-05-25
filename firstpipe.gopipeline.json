@@ -1,0 +1,37 @@
+{
+  "name": "firstpipe",
+  "environment_variables": [],
+  "group" : "configrepo-example",
+  "materials": [
+    {
+      "url": "https://github.com/SchubertD/test-react-gocd.git",
+      "type": "git"
+    }
+  ],
+  "stages": [
+    {
+      "name": "build",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "build",
+          "environment_variables": [],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": null,
+          "timeout": 0,
+          "tasks": [
+            {
+              "type": "rake"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
