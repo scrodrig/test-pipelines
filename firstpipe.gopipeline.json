@@ -1,7 +1,7 @@
 {
-  "name": "firstpipe",
+  "name": "leave-front",
   "environment_variables": [],
-  "group" : "configrepo-example",
+  "group" : "leave",
   "materials": [
     {
       "url": "https://github.com/SchubertD/test-react-gocd.git",
@@ -10,14 +10,14 @@
   ],
   "stages": [
     {
-      "name": "build",
+      "name": "QA",
       "fetch_materials": true,
       "never_cleanup_artifacts": false,
       "clean_working_directory": false,
       "environment_variables": [],
       "jobs": [
         {
-          "name": "build",
+          "name": "unit",
           "environment_variables": [],
           "tabs": [],
           "resources": [],
@@ -27,7 +27,26 @@
           "timeout": 0,
           "tasks": [
             {
-              "type": "rake"
+              "type": "exec",
+              "run_if": "passed",
+              "on_cancel" : null,
+              "command": "/bin/bash",
+              "arguments": [
+                "-c",
+                "npm install"
+              ],
+              "working_directory": null
+            },
+            {
+              "type": "exec",
+              "run_if": "passed",
+              "on_cancel" : null,
+              "command": "/bin/bash",
+              "arguments": [
+                "-c",
+                "CI=true npm install"
+              ],
+              "working_directory": null
             }
           ]
         }
