@@ -44,7 +44,7 @@
               "command": "/bin/bash",
               "arguments": [
                 "-c",
-                "CI=true npm install"
+                "CI=true npm test"
               ],
               "working_directory": null
             }
